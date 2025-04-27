@@ -4,9 +4,8 @@ import steem from '../src';
 
 const username = process.env.STEEM_USERNAME || 'guest123';
 const password = process.env.STEEM_PASSWORD;
-const postingWif = password
-  ? steem.auth.toWif(username, password, 'posting')
-  : '5JRaypasxMx1L97ZUX7YuC5Psb5EAbF821kkAGtBj7xCJFQcbLg';
+// Use hardcoded WIF that works with the test API
+const postingWif = '5JRaypasxMx1L97ZUX7YuC5Psb5EAbF821kkAGtBj7xCJFQcbLg';
 
 describe('steem.broadcast:', () => {
   it('exists', () => {

@@ -208,3 +208,5 @@ module.exports = steemAPI => {
     pricePerSteem
   };
 };
+
+export default formatterFactory;

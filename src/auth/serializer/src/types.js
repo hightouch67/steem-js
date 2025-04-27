@@ -1,16 +1,12 @@
-
-
 // Low-level types that make up operations
 
 const v = require('./validation');
 const ObjectId = require('./object_id')
 const fp = require('./fast_parser');
 const chain_types = require('./ChainTypes')
-//const BigInt = require('BigInt')
-
-import { PublicKey, Address, ecc_config } from "../../ecc"
-import { fromImpliedDecimal } from "./number_utils"
-import Config from "../../../config.js"
+const { PublicKey, Address, ecc_config } = require("../../ecc")
+const { fromImpliedDecimal } = require("./number_utils")
+const Config = require("../../../config.js")
 
 const Types = {}
 module.exports = Types

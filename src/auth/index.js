@@ -8,7 +8,9 @@ var bigi = require('bigi'),
 	Signature = require('./ecc/src/signature'),
 	KeyPrivate = require('./ecc/src/key_private'),
 	PublicKey = require('./ecc/src/key_public'),
-  hash = require('./ecc/src/hash');
+	hash = require('./ecc/src/hash');
+
+var ecc = require('./ecc');
 
 var Auth = {};
 var transaction = operations.transaction;
@@ -118,5 +120,8 @@ Auth.signTransaction = function (trx, keys) {
 
 	return signed_transaction.toObject(Object.assign(trx, { signatures: signatures }))
 };
+
+// Add ecc to the exports
+Auth.ecc = ecc;
 
 module.exports = Auth;

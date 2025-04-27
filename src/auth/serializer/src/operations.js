@@ -1,4 +1,3 @@
-
 // This file is merge updated from steemd's js_operation_serializer program.
 /*
 
@@ -31,8 +30,8 @@ static_variant [
 
 // Merge tmp.js - See "Generated code follows" below
 
-import types from "./types"
-import SerializerImpl from "./serializer"
+const types = require("./types")
+const SerializerImpl = require("./serializer")
 
 const {
     //id_type,

@@ -1,10 +1,13 @@
-import config from "../src/config"
-import { Aes, PrivateKey, PublicKey, Signature } from "../src/auth/ecc"
-import assert from "assert"
+const config = require("../src/config");
+const { Aes, PrivateKey, PublicKey, Signature } = require("../src/auth/ecc");
+const assert = require("assert");
 
-var secureRandom = require('secure-random');
-var hash = require('../src/auth/ecc/src/hash');
-var key = require('../src/auth/ecc/src/key_utils');
+const secureRandom = require('secure-random');
+const hash = require('../src/auth/ecc/src/hash');
+const key = require('../src/auth/ecc/src/key_utils');
+
+// 10 second timeout
+jest.setTimeout(10000);
 
 describe("steem.auth: Crypto", function() {
 
@@ -14,15 +17,10 @@ describe("steem.auth: Crypto", function() {
         console.log public_key.toHex());*/
 
     it("sign", function() {
-        this.timeout(10000);
-        var private_key = PrivateKey.fromSeed("1");
-        return (() => {
-            var result = [];
-            for (var i = 0; i < 10; i++) {
-                result.push(Signature.signBuffer((new Buffer.alloc(i)), private_key));
-            }
-            return result;
-        })();
+        const private_key = PrivateKey.fromSeed("1");
+        for (var i = 0; i < 10; i++) {
+            Signature.signBuffer((new Buffer.alloc(i)), private_key);
+        }
     });
 
 })

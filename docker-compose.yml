@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  node16:
+    build:
+      context: .
+      dockerfile: node-16.dockerfile
+    volumes:
+      - ./test-results/node16:/app/test-results
+
+  node18:
+    build:
+      context: .
+      dockerfile: node-18.dockerfile
+    volumes:
+      - ./test-results/node18:/app/test-results
+
+  node20:
+    build:
+      context: .
+      dockerfile: node-20.dockerfile
+    volumes:
+      - ./test-results/node20:/app/test-results
+
+  latest:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./test-results/latest:/app/test-results 

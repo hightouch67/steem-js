@@ -2,23 +2,34 @@ import each from 'lodash/each';
 const defaultConfig = require('../config.json');
 
 class Config {
-  constructor(c) {
-    each(c, (value, key) => {
-      this[key] = value;
-    });
-  }
+    constructor() {
+        this._config = {
+            websocket: defaultConfig.websocket,
+            uri: defaultConfig.uri,
+            url: defaultConfig.url,
+            retry: defaultConfig.retry,
+            agent: defaultConfig.agent,
+            chain_id: defaultConfig.chain_id,
+            address_prefix: defaultConfig.address_prefix,
+            rebranded_api: defaultConfig.rebranded_api || false,
+            useAppbaseApi: defaultConfig.useAppbaseApi || false,
+        };
+    }
 
-  get(k) {
-    return this[k];
-  }
+    set(key, value) {
+        this._config[key] = value;
+    }
 
-  set(k, v) {
-    this[k] = v;
-  }
+    get(key) {
+        return this._config[key];
+    }
+
+    isProduction() {
+        return this.get('env') === 'production';
+    }
 }
 
-module.exports = new Config(defaultConfig);
-if(typeof module.exports.Config !== 'undefined') {
-  throw new Error("default config.json file may not contain a property 'Config'");
-}
-module.exports.Config = Config;
+// Create a singleton instance
+const config = new Config();
+
+export default config;

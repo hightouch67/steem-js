@@ -1,6 +1,15 @@
 {
   "presets": [
-    "es2015",
-    "es2017"
-  ]
-}
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "current"
+        },
+        "useBuiltIns": "usage",
+        "corejs": 3
+      }
+    ]
+  ],
+  "plugins": []
+} 

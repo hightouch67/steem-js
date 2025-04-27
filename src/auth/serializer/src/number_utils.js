@@ -1,4 +1,4 @@
-import assert from "assert"
+const assert = require("assert")
 
 /**
     Convert 12.34 with a precision of 3 into 12340
@@ -7,7 +7,7 @@ import assert from "assert"
     @arg {number} precision - number of implied decimal places (usually causes right zero padding)
     @return {string} -
 */
-export function toImpliedDecimal(number, precision) {
+function toImpliedDecimal(number, precision) {
 
     if(typeof number === "number") {
         assert(number <= 9007199254740991, "overflow")
@@ -34,7 +34,7 @@ export function toImpliedDecimal(number, precision) {
     return whole + decimal
 }
 
-export function fromImpliedDecimal(number, precision) {
+function fromImpliedDecimal(number, precision) {
     if(typeof number === "number") {
         assert(number <= 9007199254740991, "overflow")
         number = ""+number;
@@ -49,5 +49,9 @@ export function fromImpliedDecimal(number, precision) {
     let dec_string = number.substring(number.length - precision)
     return number.substring(0, number.length - precision) +
         (dec_string ? "." + dec_string : "")
+}
 
+module.exports = {
+    toImpliedDecimal,
+    fromImpliedDecimal
 }

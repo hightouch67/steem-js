@@ -1,9 +1,8 @@
-
-import ByteBuffer from '@exodus/bytebuffer'
-import assert from 'assert'
-import base58 from 'bs58'
-import {Aes, PrivateKey, PublicKey} from './ecc'
-import {ops} from './serializer'
+const ByteBuffer = require('bytebuffer')
+const assert = require('assert')
+const base58 = require('bs58')
+const {Aes, PrivateKey, PublicKey} = require('./ecc')
+const {ops} = require('./serializer')
 
 const encMemo = ops.encrypted_memo
 
@@ -13,7 +12,7 @@ const encMemo = ops.encrypted_memo
     @arg {string} memo - plain text is returned, hash prefix base58 is decrypted
     @return {string} - utf8 decoded string (hash prefix)
 */
-export function decode(private_key, memo) {
+function decode(private_key, memo) {
     assert(memo, 'memo is required')
     assert.equal(typeof memo, 'string', 'memo')
     if(!/^#/.test(memo)) return memo
@@ -53,7 +52,7 @@ export function decode(private_key, memo) {
     @arg {string} [testNonce = undefined] - just for testing
     @return {string} - base64 decoded string (or plain text)
 */
-export function encode(private_key, public_key, memo, testNonce) {
+function encode(private_key, public_key, memo, testNonce) {
     assert(memo, 'memo is required')
     assert.equal(typeof memo, 'string', 'memo')
     if(!/^#/.test(memo)) return memo
@@ -110,3 +109,8 @@ function checkEncryption() {
 
 const toPrivateObj = o => (o ? o.d ? o : PrivateKey.fromWif(o) : o/*null or undefined*/)
 const toPublicObj = o => (o ? o.Q ? o : PublicKey.fromString(o) : o/*null or undefined*/)
+
+module.exports = {
+    decode,
+    encode
+}
