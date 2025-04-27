@@ -36,9 +36,9 @@
   "author": "Fabien (https://github.com/bonustrack)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/username/steem-js-updated/issues"
+    "url": "https://github.com/steemit/steem-js/issues"
   },
-  "homepage": "https://github.com/username/steem-js-updated#readme",
+  "homepage": "https://github.com/steemit/steem-js#readme",
   "dependencies": {
     "assert": "^2.1.0",
     "bigi": "^1.4.2",
@@ -69,6 +69,8 @@
     "@babel/core": "^7.18.2",
     "@babel/preset-env": "^7.18.2",
     "@babel/register": "^7.22.15",
+    "ajv": "^8.17.1",
+    "ajv-keywords": "^5.1.0",
     "babel-jest": "^28.1.0",
     "babel-loader": "^10.0.0",
     "buffer": "^6.0.3",
